@@ -39,3 +39,16 @@ This script introduces the following keyboard shortcuts:
 ## Troubleshooting
 
 This script is provided as-is and may break if ChatGPT’s interface changes. If you encounter issues, feel free to open an [issue](https://github.com/Atari-01/Script-chatgpt-shortcuts/issues) or contribute a fix via a pull request.
+
+## Contributing
+
+Contributions are welcome!
+
+If you have an idea to improve this script, found a bug, or want to add new shortcuts, feel free to:
+
+1. [Open an issue](https://github.com/Atari-01/Script-chatgpt-shortcuts/issues) to start a discussion.
+2. Fork the repository.
+3. Create a branch for your feature or fix.
+4. Submit a pull request.
+
+Please remember to give visible attribution to the original author if you build upon this project. See the [LICENSE](LICENSE) file for more details.
