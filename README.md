@@ -2,6 +2,12 @@
 
 This repository contains a lightweight Tampermonkey script that enhances the ChatGPT user experience by adding two custom keyboard shortcuts. The goal is to streamline navigation and improve productivity without relying on UI interactions.
 
+## Quick Install
+
+You can install the script directly via Tampermonkey by clicking the link below:
+
+[Install Script](https://raw.githubusercontent.com/Atari-01/Script-chatgpt-shortcuts/main/chatgpt-shortcuts.user.js)
+
 ## Features
 
 This script introduces the following keyboard shortcuts:
