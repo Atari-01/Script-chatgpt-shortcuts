@@ -7,6 +7,7 @@
 // @match        https://chatgpt.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=chatgpt.com
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/Atari-01/Script-chatgpt-shortcuts/main/chatgpt-shortcuts.user.js
 // ==/UserScript==
 (function() {
   'use strict';
