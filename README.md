@@ -6,7 +6,7 @@ This repository contains a lightweight Tampermonkey script that enhances the Cha
 
 You can install the script directly via Tampermonkey by clicking the link below:
 
-[Install Script](https://raw.githubusercontent.com/Atari-01/Script-chatgpt-shortcuts/main/chatgpt-shortcuts.user.js)
+[Click here to install via Tampermonkey](https://raw.githubusercontent.com/Atari-01/Script-chatgpt-shortcuts/main/chatgpt-shortcuts.user.js)
 
 ## Features
 
