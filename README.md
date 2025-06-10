@@ -31,11 +31,6 @@ This script introduces the following keyboard shortcuts:
 - Tampermonkey installed and running.
 - A ChatGPT account.
 
-## Repository Contents
-
-- `ChatGPT Productivity Shortcuts 1.0.js`: The main script file.
-- `README.md`: This documentation file.
-
 ## Troubleshooting
 
 This script is provided as-is and may break if ChatGPT’s interface changes. If you encounter issues, feel free to open an [issue](https://github.com/Atari-01/Script-chatgpt-shortcuts/issues) or contribute a fix via a pull request.
