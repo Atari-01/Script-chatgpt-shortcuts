@@ -9,48 +9,67 @@
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/Atari-01/Script-chatgpt-shortcuts/main/chatgpt-shortcuts.user.js
 // ==/UserScript==
-(function() {
+(function () {
   'use strict';
-  const getTempBtn = () => [...document.querySelectorAll('button')].find(b => {
-    const l = (b.getAttribute('aria-label') || b.title || '').toLowerCase();
-    return l.includes('activar chat temporal') || l.includes('desactivar chat temporal');
-  });
-  const getSidebarClose = () => document.querySelector('#sidebar-header > div > button');
-  const getSidebarOpen = () => [...document.querySelectorAll('button[aria-label], button[title]')].find(b => {
-    const l = (b.getAttribute('aria-label') || b.title || '').toLowerCase();
-    return l.includes('abrir barra lateral');
-  });
-  const tryClickSidebar = (max = 8, delay = 60) => {
-    let count = 0;
-    const i = setInterval(() => {
-      const close = getSidebarClose();
-      if (close) {
-        close.click();
-        clearInterval(i);
-        return;
-      }
-      const open = getSidebarOpen();
-      if (open) {
-        open.click();
-        clearInterval(i);
-        return;
-      }
-      count++;
-      if (count >= max) clearInterval(i);
-    }, delay);
+
+  const tempKeywords = ['activar chat temporal', 'desactivar chat temporal'];
+  const sidebarKey = 'abrir barra lateral';
+
+  let tempBtnCache = null;
+  let avatarCache = null;
+
+  const labelMatches = (el, keywords) => {
+    const label = (el.getAttribute('aria-label') || el.title || '').toLowerCase();
+    return keywords.some(k => label.includes(k));
   };
-  document.addEventListener('keydown', e => {
-    if (e.ctrlKey && !e.shiftKey && !e.altKey) {
-      const k = e.key.toLowerCase();
-      if (k === 'i') {
-        e.preventDefault();
-        const btn = getTempBtn();
-        if (btn) btn.click();
-      }
-      if (k === 'b') {
-        e.preventDefault();
-        tryClickSidebar();
-      }
+
+  const findButton = (keywords) =>
+    Array.from(document.querySelectorAll('button[aria-label], button[title]'))
+      .find(btn => labelMatches(btn, keywords)) || null;
+
+  const getTempButton = () =>
+    (tempBtnCache && document.contains(tempBtnCache)) ? tempBtnCache : (tempBtnCache = findButton(tempKeywords));
+
+  const getSidebarOpen = () => findButton([sidebarKey]);
+  const getSidebarClose = () => document.querySelector('#sidebar-header > div > button');
+
+  const tryToggleSidebar = (maxTries = 8) => {
+    let attempts = 0;
+    const loop = () => {
+      const closeBtn = getSidebarClose();
+      if (closeBtn) return closeBtn.click();
+      const openBtn = getSidebarOpen();
+      if (openBtn) return openBtn.click();
+      if (++attempts < maxTries) requestAnimationFrame(loop);
+    };
+    loop();
+  };
+
+  const toggleAvatar = () => {
+    if (!avatarCache || !document.contains(avatarCache)) {
+      avatarCache = document.querySelector('img[src^="https://lh3.googleusercontent.com/"][alt="User"]');
     }
-  });
+    if (avatarCache) {
+      const isHidden = avatarCache.style.display === 'none';
+      avatarCache.style.setProperty('display', isHidden ? 'inline-block' : 'none', 'important');
+    }
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (!e.ctrlKey || e.altKey) return;
+
+    const key = e.key.toLowerCase();
+
+    if (key === 'i' && !e.shiftKey) {
+      e.preventDefault();
+      getTempButton()?.click();
+    } else if (key === 'b' && !e.shiftKey) {
+      e.preventDefault();
+      tryToggleSidebar();
+    } else if (key === 'h' && e.shiftKey) {
+      e.preventDefault();
+      toggleAvatar();
+    }
+  }, { passive: false });
+
 })();
