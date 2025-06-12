@@ -1,6 +1,6 @@
 # Script chatgpt shortcuts
 
-This repository contains a lightweight Tampermonkey script that enhances the ChatGPT user experience by adding two custom keyboard shortcuts. The goal is to streamline navigation and improve productivity without relying on UI interactions.
+This repository contains a lightweight Tampermonkey script that enhances the ChatGPT user experience by adding custom keyboard shortcuts. The goal is to streamline navigation and improve productivity without relying on UI interactions.
 
 ## Quick Install
 
@@ -17,6 +17,9 @@ This script introduces the following keyboard shortcuts:
 
 - **Ctrl + B**  
   Shows or hides the sidebar. Helps maintain focus by minimizing visual distractions.
+
+- **Ctrl + Shift + H**  
+  Shows or hides the profile dropdown menu. Useful for quickly accessing or dismissing account options without clicking.
 
 ## Installation
 
